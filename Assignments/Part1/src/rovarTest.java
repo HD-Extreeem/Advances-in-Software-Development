@@ -78,8 +78,47 @@ public class rovarTest {
 
 		assertEquals("magnus*--/1234krampel", rovar.derov("momagognonusos*--/1234kokroramompopelol"));
 	}
-	
-	
+
+	@Test
+	public void testAllLettersUpper(){
+		assertEquals("ABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ", rovar.derov("abobcocdodefofgoghohijojkoklolmomnonopopqoqrorsostotuvovwowxoxyzozåäö"));
+	}
+
+	@Test
+	public void testAllLettersUpper(){
+		assertEquals("ABOBCOCDODEFOFGOGHOHIJOJKOKLOLMOMNONOPOPQOQRORSOSTOTUVOVWOWXOXYZOZÅÄÖ", rovar.enrov("ABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ"));
+	}
+
+	@Test
+	public void testAllLettersLower(){
+		assertEquals("abcdefghijklmnopqrstuvwxyzåäö", rovar.derov("abobcocdodefofgoghohijojkoklolmomnonopopqoqrorsostotuvovwowxoxyzozåäö"));
+	}
+
+	@Test
+	public void testAllLettersLower(){
+		assertEquals("abobcocdodefofgoghohijojkoklolmomnonopopqoqrorsostotuvovwowxoxyzozåäö", rovar.enrov("abcdefghijklmnopqrstuvwxyzåäö"));
+	}
+	1234567890
+
+	@Test
+	public void testAllNumbersEn(){
+		assertEquals("1234567890", rovar.enrov("1234567890"));
+	}
+
+	@Test
+	public void testAllNumbersDe(){
+		assertEquals("1234567890", rovar.derov("1234567890"));
+	}
+
+	@Test
+	public void testAllCharactersEn(){
+		assertEquals("!\"#€%&/()=?`*^•Ωé®†µüıœπøﬁª√˛¸ƒ∂ß÷≈ç‹›‘’‚…;:–_´±≈][|§∞$£@©{}[]¿`\\¶‰¢¥”¡”•≤≥<>", rovar.enrov("!\"#€%&/()=?`*^•Ωé®†µüıœπøﬁª√˛¸ƒ∂ß÷≈ç‹›‘’‚…;:–_´±≈][|§∞$£@©{}[]¿`\\¶‰¢¥”¡”•≤≥<>"));
+	}
+
+	@Test
+	public void testAllCharacterssDe(){
+		assertEquals("!\"#€%&/()=?`*^•Ωé®†µüıœπøﬁª√˛¸ƒ∂ß÷≈ç‹›‘’‚…;:–_´±≈][|§∞$£@©{}[]¿`\\¶‰¢¥”¡”•≤≥<>", rovar.derov("!\"#€%&/()=?`*^•Ωé®†µüıœπøﬁª√˛¸ƒ∂ß÷≈ç‹›‘’‚…;:–_´±≈][|§∞$£@©{}[]¿`\\¶‰¢¥”¡”•≤≥<>"));
+	}
 
 	
 }

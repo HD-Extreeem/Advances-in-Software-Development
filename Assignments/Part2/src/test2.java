@@ -8,7 +8,6 @@ public class Test2 {
 
 	@Before
 	public void setup(){
-		System.out.println("Test");
 		clock = new Clock();
 	}
 	
@@ -48,67 +47,100 @@ public class Test2 {
 	}
 
 	@Test
-	public void testSecondLimit1() {
+	public void testSecondLimitUnder() {
 		assertEquals("Illegal state!", clock.set(16, 57, -10));
 	}
 
 	@Test
-	public void testSecondLimit2() {
+	public void testSecondLimitBetween() {
+		assertEquals("16:57:10", clock.set(16, 57, 10));
+	}
+
+	@Test
+	public void testSecondLimitOver() {
 		assertEquals("Illegal state!", clock.set(16, 57, 60));
 	}
 
 	@Test
-	public void testMinuteLimit1() {
+	public void testMinuteLimitOver() {
 		assertEquals("Illegal state!", clock.set(16, 60, 00));
+	}
+
+	@Test
+	public void testMinuteLimitBetween() {
+		assertEquals("16:30:0", clock.set(16, 30, 00));
 	}
 	
 	@Test
-	public void testMinuteLimit2() {
+	public void testMinuteLimitUnder() {
 		assertEquals("Illegal state!", clock.set(16, -10, 00));
 	}
 
 	@Test
-	public void testHourLimit1() {
+	public void testHourLimitUnder() {
 		assertEquals("Illegal state!", clock.set(-10, 50, 00));
 	}
 
 	@Test
-	public void testHourLimit2() {
+	public void testHourLimitUnder() {
+		assertEquals("10:50:0", clock.set(10, 50, 00));
+	}
+
+	@Test
+	public void testHourLimitOver() {
 		assertEquals("Illegal state!", clock.set(60, 50, 00));
 	}
 
 	@Test
-	public void testDayLimit2() {
+	public void testDayLimitOver() {
 		clock.changeMode();
 		assertEquals("Illegal state!", clock.set(2000, 01, 32));
 	}
+
+	@Test
+	public void testDayLimitBetween() {
+		clock.changeMode();
+		assertEquals("2000-01-15", clock.set(2000, 01, 15));
+	}
 	
 	@Test
-	public void testDayLimit1() {
+	public void testDayLimitUnder() {
 		clock.changeMode();
 		assertEquals("Illegal state!", clock.set(2001, 01, -10));
 	}
 
 	@Test
-	public void testMonthLimit1() {
+	public void testMonthLimitUnder() {
 		clock.changeMode();
 		assertEquals("Illegal state!", clock.set(2000, -2, 31));
 	}
 
 	@Test
-	public void testMonthLimit2() {
+	public void testMonthLimitBetween() {
+		clock.changeMode();
+		assertEquals("2000-6-15", clock.set(2000, 6, 15));
+	}
+
+	@Test
+	public void testMonthLimitOver() {
 		clock.changeMode();
 		assertEquals("Illegal state!", clock.set(2000, 13, 31));
 	}
 
 	@Test
-	public void testYearLimit1() {
+	public void testYearLimitUnder() {
 		clock.changeMode();
 		assertEquals("Illegal state!", clock.set(1999, 12, 31));
 	}
 
 	@Test
-	public void testYearLimit2() {
+	public void testYearLimitBetween() {
+		clock.changeMode();
+		assertEquals("2018-10-1", clock.set(2018, 10, 1));
+	}
+
+	@Test
+	public void testYearLimitOver() {
 		clock.changeMode();
 		assertEquals("Illegal state!", clock.set(2101, 12, 31));
 	}
